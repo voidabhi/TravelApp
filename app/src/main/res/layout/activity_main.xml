@@ -1,17 +1,25 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="none"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textview_category"
         android:text="Select Category"
         android:layout_width="match_parent"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textSize="20dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:textColor="@color/theme_color"
+        android:textAppearance="@android:style/TextAppearance.Medium"
         android:layout_height="wrap_content"
         android:textStyle="bold"
      />
@@ -23,18 +31,22 @@
         android:id="@+id/spinner_categories"
         android:layout_below="@+id/textview_category"
         android:padding="@dimen/activity_vertical_margin"
-        android:textSize="30dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:background="@drawable/toast_shape"
         android:layout_centerHorizontal="true"
+        android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown" />
 
     <TextView
         android:id="@+id/textview_distance"
         android:text="Select Distance"
-        android:padding="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_below="@+id/spinner_categories"
-        android:textSize="20dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
         android:layout_height="wrap_content"
+        android:textColor="@color/theme_color"
         android:textStyle="bold"
         />
 
@@ -44,9 +56,11 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_vertical_margin"
         android:id="@+id/spinner_distances"
+        android:background="@drawable/toast_shape"
         android:layout_below="@+id/textview_distance"
-        android:textSize="30dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
         android:layout_centerHorizontal="true"
+        android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown" />
 
 
@@ -58,8 +72,13 @@
         android:layout_below="@+id/spinner_distances"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:textColor="@android:color/white"
+        android:background="@drawable/toast_shape"
+        android:layout_alignParentBottom="true"
          />
 
 
-
 </RelativeLayout>
+    </ScrollView>

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,6 +34,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.voidabhi.travelapp.utils.NetUtils.showToast;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -58,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         if(!NetUtils.isGooglePlayServicesAvailable(this)){
-            Toast.makeText(getApplicationContext(),R.string.services_na,Toast.LENGTH_LONG).show();
+            showToast(MapsActivity.this,R.string.services_na);
             finish();
         }
 
@@ -77,7 +78,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onResume() {
         super.onResume();
-       //  searchPlaces(getRequestURL());
     }
 
     @Override
@@ -90,7 +90,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        Toast.makeText(MapsActivity.this,R.string.message_tap_marker,Toast.LENGTH_SHORT).show();
+        showToast(MapsActivity.this,R.string.message_tap_marker);
 
         mMap = googleMap;
 
@@ -134,27 +134,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     super.onSuccess(statusCode, headers, response);
 
                     try {
-
-                        Toast.makeText(MapsActivity.this, response.getJSONArray("results").length()+" places found", Toast.LENGTH_LONG).show();
+                        showToast(MapsActivity.this,response.getJSONArray("results").length()+" places found");
                         parseJson(response.getJSONArray("results"));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(MapsActivity.this, R.string.unexpected, Toast.LENGTH_LONG).show();
+                        showToast(MapsActivity.this,R.string.unexpected);
                     }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     super.onFailure(statusCode, headers, responseString, throwable);
-                    Toast.makeText(MapsActivity.this, R.string.unexpected, Toast.LENGTH_LONG).show();
+                    showToast(MapsActivity.this,R.string.unexpected);
                 }
             });
 
 
 
         } else {
-            Toast.makeText(MapsActivity.this,R.string.message_internet,Toast.LENGTH_LONG).show();
+            showToast(MapsActivity.this,R.string.message_internet);
         }
     }
 
@@ -171,7 +170,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (places != null) {
                     addMarkers();
                 } else {
-                    Toast.makeText(MapsActivity.this, R.string.unexpected, Toast.LENGTH_LONG).show();
+                    showToast(MapsActivity.this,R.string.unexpected);
                 }
 
             }
@@ -266,7 +265,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 MediaPlayer mMediaPlayer = MediaPlayer.create(getApplicationContext(), resid);
                 mMediaPlayer.start();
-                generateNotification(getApplicationContext(), "Zomatify Review", "Playing Review");
+                generateNotification(getApplicationContext(), R.string.notification_title, R.string.notification_content);
                 mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
                     @Override
@@ -277,9 +276,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 });
 
+                showToast(MapsActivity.this,"Playing sample audio file");
+
             }
 
-                private void generateNotification(Context context, String title, String message) {
+                private void generateNotification(Context context,int titleId, int messageId) {
+
+                    String title = getResources().getString(titleId);
+                    String message = getResources().getString(messageId);
+
                     NotificationCompat.Builder builder =  new NotificationCompat.Builder(context)
                             .setSmallIcon(R.drawable.ic_launcher)
                             .setContentTitle(title)

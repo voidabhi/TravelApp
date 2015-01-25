@@ -10,5 +10,10 @@
     <string name="services_na">Google play services are not supported</string>
     <string name="unexpected">Some unexpected error has occurred</string>
     <string name="message_maps_loading">Maps may take sometime to load</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="notification_title">Playing Zomatify Review</string>
+    <string name="notification_content">Tap other markers to listen review</string>
+
 
 </resources>

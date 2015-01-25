@@ -4,9 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.voidabhi.travelapp.R;
 
 
 /**
@@ -35,5 +41,23 @@ public class NetUtils {
             GooglePlayServicesUtil.getErrorDialog(status,activity, 0).show();
             return false;
         }
+    }
+
+    public static void showToast(Activity activity,int resid){
+
+        showToast(activity,activity.getResources().getString(resid));
+    }
+
+    public static void showToast(Activity activity,String message){
+
+        View layout = activity.getLayoutInflater().inflate(R.layout.toast,null);
+
+        TextView textView = (TextView) layout.findViewById(R.id.toast_message);
+        textView.setText(message);
+
+        Toast toast = new Toast(activity);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);//setting the view of custom toast layout
+        toast.show();
     }
 }
