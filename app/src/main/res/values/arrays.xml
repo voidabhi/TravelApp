@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categoriesArray">
+        <item>Restaurant</item>
+        <item>Hospital</item>
+        <item>Lodging</item>
+        <item>Bank</item>
+        <item>Spa</item>
+        <item>Airport</item>
+    </string-array>
+
+    <string-array name="distancesArray">
+        <item>5 KM</item>
+        <item>10 KM</item>
+        <item>25 KM</item>
+        <item>50 KM</item>
+        <item>70 KM</item>
+    </string-array>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Zomatify</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="message_internet">You need internet to perform this action</string>
+    <string name="message_tap_marker">Tap marker to play the review</string>
+    <string name="services_na">Google play services are not supported</string>
+    <string name="unexpected">Some unexpected error has occurred</string>
+    <string name="message_maps_loading">Maps may take sometime to load</string>
+
+</resources>
