@@ -14,6 +14,9 @@
 
     <string name="notification_title">Playing Zomatify Review</string>
     <string name="notification_content">Tap other markers to listen review</string>
+    <string name="fetching_location">Fetching your location...</string>
+    <string name="cannot_access_current_location">Cannot access your current location. Fetching last known location</string>
+    <string name="cannot_access_location">Cannot access your location. Switch on GPS and try again.</string>
 
 
 </resources>

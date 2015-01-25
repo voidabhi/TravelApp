@@ -6,6 +6,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.voidabhi.travelapp.utils.NetUtils;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -66,19 +69,31 @@ public class MainActivity extends ActionBarActivity {
 
                 if(NetUtils.isOnline(MainActivity.this)) {
 
-                    Intent mapsIntent = new Intent(getApplicationContext(),MapsActivity.class);
-                    mapsIntent.putExtra("category",category.toLowerCase());
-                    mapsIntent.putExtra("distance",distance.split(" ")[0]+"000");
-                    showToast(MainActivity.this,R.string.message_maps_loading);
-                    Location location = getCurrentLocation();
-                    mapsIntent.putExtra("latitude",location.getLatitude());
-                    mapsIntent.putExtra("longitude",location.getLongitude());
+                    showToast(MainActivity.this,R.string.fetching_location);
 
-                    startActivity(mapsIntent);
+                        Intent mapsIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        mapsIntent.putExtra("category", category.toLowerCase());
+                        mapsIntent.putExtra("distance", distance.split(" ")[0] + "000");
+
+                        Location location = getCurrentLocation();
+
+                        if(location == null) {
+                            showToast(MainActivity.this,R.string.cannot_access_current_location);
+                        }
+
+                        if(location!=null) {
+
+                            mapsIntent.putExtra("latitude", location.getLatitude());
+                            mapsIntent.putExtra("longitude", location.getLongitude());
+                            showToast(MainActivity.this,R.string.message_maps_loading);
+                            startActivity(mapsIntent);
+                        }
+                        else
+                             showToast(MainActivity.this,R.string.cannot_access_location);
 
                 } else {
 
-                    showToast(MainActivity.this,getResources().getString(R.string.message_maps_loading));
+                    showToast(MainActivity.this,R.string.message_internet);
 
                 }
 
@@ -119,11 +134,33 @@ public class MainActivity extends ActionBarActivity {
 
     public Location getCurrentLocation() {
 
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        String bestProvider = locationManager.getBestProvider(criteria, true);
-        Location location = locationManager.getLastKnownLocation(bestProvider);
+         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+         Criteria criteria = new Criteria();
+         String bestProvider = locationManager.getBestProvider(criteria, true);
+         Location location = locationManager.getLastKnownLocation(bestProvider);
 
         return location;
+    }
+
+    private Location getLastKnownLocation() {
+
+        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = mLocationManager.getLastKnownLocation(provider);
+
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null
+                    || l.getAccuracy() < bestLocation.getAccuracy()) {
+                bestLocation = l;
+            }
+        }
+        if (bestLocation == null) {
+            return null;
+        }
+        return bestLocation;
     }
 }

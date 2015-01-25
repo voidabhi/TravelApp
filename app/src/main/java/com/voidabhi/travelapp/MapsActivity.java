@@ -53,7 +53,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static final float ZOOM_LEVEL= 17.0f;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +65,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
 
-
         category = getIntent().getStringExtra("category");
         distance = getIntent().getStringExtra("distance");
         location = new LatLng(getIntent().getDoubleExtra("latitude", 0.0d),getIntent().getDoubleExtra("longitude",0.0d));
-
 
         searchPlaces(getRequestURL());
     }
