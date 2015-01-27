@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
-    <string name="message_internet">You need internet to perform this action</string>
+    <string name="message_internet">No internet connection</string>
     <string name="message_tap_marker">Tap marker to play the review</string>
     <string name="services_na">Google play services are not supported</string>
     <string name="unexpected">Some unexpected error has occurred</string>
