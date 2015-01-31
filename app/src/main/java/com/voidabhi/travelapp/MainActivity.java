@@ -135,38 +135,6 @@ public class MainActivity extends ActionBarActivity {
 
 
     // Helpers
-
-//    public Location getCurrentLocation() {
-//
-//         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//         Criteria criteria = new Criteria();
-//         String bestProvider = locationManager.getBestProvider(criteria, true);
-//         Location location = locationManager.getLastKnownLocation(bestProvider);
-//
-//        return location;
-//    }
-//
-//    private Location getLastKnownLocation() {
-//
-//        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        List<String> providers = mLocationManager.getProviders(true);
-//        Location bestLocation = null;
-//        for (String provider : providers) {
-//            Location l = mLocationManager.getLastKnownLocation(provider);
-//
-//            if (l == null) {
-//                continue;
-//            }
-//            if (bestLocation == null
-//                    || l.getAccuracy() < bestLocation.getAccuracy()) {
-//                bestLocation = l;
-//            }
-//        }
-//        if (bestLocation == null) {
-//            return null;
-//        }
-//        return bestLocation;
-//    }
 	
     public Location getCurrentLocation()
     {
