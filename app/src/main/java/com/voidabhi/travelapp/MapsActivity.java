@@ -154,6 +154,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    // Parsing json array into places
     public void parseJson(final JSONArray results) {
 
 
