@@ -1,5 +1,6 @@
 package com.voidabhi.travelapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Criteria;
@@ -36,6 +37,9 @@ public class MainActivity extends ActionBarActivity {
 
     String[] categoriesArray = null;
     String[] distancesArray = null;
+
+    private static final long GPS_UPDATE_FREQUENCY = 5000;
+    private static final float GPS_UPDATE_DISTANCE = 1;
 
 
     @Override
@@ -77,9 +81,9 @@ public class MainActivity extends ActionBarActivity {
 
                         Location location = getCurrentLocation();
 
-                        if(location == null) {
-                            showToast(MainActivity.this,R.string.cannot_access_current_location);
-                        }
+//                        if(location == null) {
+//                            showToast(MainActivity.this,R.string.cannot_access_current_location);
+//                        }
 
                         if(location!=null) {
 
@@ -131,36 +135,33 @@ public class MainActivity extends ActionBarActivity {
 
 
     // Helpers
+	
+    public Location getCurrentLocation()
+    {
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE );
+        Location location = null;
+        boolean isGPSEnabled = locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER );
+        boolean isNetworkEnabled = locationManager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
+        if ( !( isGPSEnabled || isNetworkEnabled ) )
+			showToast(MainActivity.this,"GPS and Network not available");
+        else
+        {
+            if ( location == null )
+            {
+                if ( isGPSEnabled )
+                {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, GPS_UPDATE_FREQUENCY, GPS_UPDATE_DISTANCE, (android.location.LocationListener) null);
+                    location = locationManager.getLastKnownLocation( LocationManager.GPS_PROVIDER );
+                }
 
-    public Location getCurrentLocation() {
-
-         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-         Criteria criteria = new Criteria();
-         String bestProvider = locationManager.getBestProvider(criteria, true);
-         Location location = locationManager.getLastKnownLocation(bestProvider);
-
+                if ( isNetworkEnabled )
+                {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, GPS_UPDATE_FREQUENCY, GPS_UPDATE_DISTANCE, (android.location.LocationListener) null);
+                    location = locationManager.getLastKnownLocation( LocationManager.NETWORK_PROVIDER );
+                }
+            }
+        }
         return location;
     }
-
-    private Location getLastKnownLocation() {
-
-        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        List<String> providers = mLocationManager.getProviders(true);
-        Location bestLocation = null;
-        for (String provider : providers) {
-            Location l = mLocationManager.getLastKnownLocation(provider);
-
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null
-                    || l.getAccuracy() < bestLocation.getAccuracy()) {
-                bestLocation = l;
-            }
-        }
-        if (bestLocation == null) {
-            return null;
-        }
-        return bestLocation;
-    }
+	
 }
