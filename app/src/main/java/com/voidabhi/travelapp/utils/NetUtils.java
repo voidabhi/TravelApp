@@ -33,6 +33,7 @@ public class NetUtils {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
+    // Checks if google play services can be used
     public static boolean isGooglePlayServicesAvailable(Activity activity) {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
         if (ConnectionResult.SUCCESS == status) {
