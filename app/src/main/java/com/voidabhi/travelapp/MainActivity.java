@@ -47,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+	// Initializing butter knife instance
         ButterKnife.inject(this);
 
         categoriesArray = getResources().getStringArray(R.array.categoriesArray);
