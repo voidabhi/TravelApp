@@ -60,6 +60,7 @@ public class Place {
         this.iconUrl = iconUrl;
     }
 
+    // parsing place json object 
     public static Place fromJson(JSONObject jsonObject) {
 
         Place p = null;
@@ -84,6 +85,7 @@ public class Place {
 
     }
 
+    // parsing places json array
     public static List<Place> fromJsonArray(JSONArray jsonArray) {
 
         try {
