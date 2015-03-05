@@ -20,7 +20,7 @@ import com.voidabhi.travelapp.R;
  */
 public class NetUtils {
 
-
+    // utility to check if the network connection is available or not
     public static boolean isOnline(Context c) {
         NetworkInfo netInfo = null;
         try {
