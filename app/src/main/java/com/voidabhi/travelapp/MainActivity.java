@@ -82,10 +82,6 @@ public class MainActivity extends ActionBarActivity {
 
                         Location location = getCurrentLocation();
 
-//                        if(location == null) {
-//                            showToast(MainActivity.this,R.string.cannot_access_current_location);
-//                        }
-
                         if(location!=null) {
 
                             mapsIntent.putExtra("latitude", location.getLatitude());
