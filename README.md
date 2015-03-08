@@ -8,7 +8,7 @@ Features
 ========
 ``` Discover new places with app```
 ``` Listen to audio reviews ```
-``` Simple workflow ```
+``` Insanely simple workflow ```
 
 Developed By
 ============
