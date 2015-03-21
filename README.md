@@ -1,6 +1,6 @@
 # Zomatify
 
-Discover local places at a speed of light.
+Search for local places at a speed of light.
 
 ![Zomatify](app/src/main/res/drawable/messages.png)
 
