@@ -12,6 +12,7 @@ Features
 
 Built With
 ============
+`ButterKnife`
 
 Developed By
 ============
