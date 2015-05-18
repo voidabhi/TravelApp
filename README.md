@@ -12,7 +12,7 @@ Features
 
 Built With
 ============
-`ButterKnife`
+`ButterKnife` `Google Play Services`
 
 Developed By
 ============
