@@ -12,7 +12,7 @@ Features
 
 Built With
 ============
-`ButterKnife` `Google Play Services`
+`ButterKnife` `Google Play Services` `Google Maps API`
 
 Developed By
 ============
