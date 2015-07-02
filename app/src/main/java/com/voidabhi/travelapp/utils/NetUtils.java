@@ -44,6 +44,7 @@ public class NetUtils {
         }
     }
 
+    // Shows toast taking  message resource id
     public static void showToast(Activity activity,int resid){
 
         showToast(activity,activity.getResources().getString(resid));
