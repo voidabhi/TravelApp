@@ -50,6 +50,7 @@ public class NetUtils {
         showToast(activity,activity.getResources().getString(resid));
     }
 
+    // Shows toast taking  string message 
     public static void showToast(Activity activity,String message){
 
         View layout = activity.getLayoutInflater().inflate(R.layout.toast,null);
