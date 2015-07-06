@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by ABHIJEET on 24-01-2015.
+ * POJO for google places
  */
 public class Place {
 
