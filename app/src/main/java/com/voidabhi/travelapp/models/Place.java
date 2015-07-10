@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class Place {
 
+    // pojo properties
     private String name;
     private LatLng location;
     private String iconUrl;
