@@ -4,3 +4,4 @@
 /.idea/libraries
 app/build
 .idea
+.DS_Store
