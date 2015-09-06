@@ -46,13 +46,11 @@ public class NetUtils {
 
     // Shows toast taking  message resource id
     public static void showToast(Activity activity,int resid){
-
         showToast(activity,activity.getResources().getString(resid));
     }
 
     // Shows toast taking  string message 
     public static void showToast(Activity activity,String message){
-
         View layout = activity.getLayoutInflater().inflate(R.layout.toast,null);
 
         TextView textView = (TextView) layout.findViewById(R.id.toast_message);
