@@ -22,6 +22,7 @@ public class SplashActivity extends Activity {
 
     }
 
+    // Add delay while showing screen
     private void startMainScreenWithDelay() {
 
         // runnable thread for the splash screen delay
