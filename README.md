@@ -1,21 +1,20 @@
-# Zomatify
+## Zomatify
 
 Search for local places at a speed of light.
 
 ![Zomatify](app/src/main/res/drawable/messages.png)
 
-Features
-========
+### Features
+ 
 ``` Discover new places with app```
 ``` Listen to audio reviews ```
 ``` Insanely simple workflow ```
 
-Built With
-============
+### Built With
+
 `ButterKnife` `Google Play Services` `Google Maps API V2`
 
-Developed By
-============
+### Developed By
 
 `Abhijeet Mohan` - `void.aby@gmail.com`
 
@@ -24,8 +23,7 @@ Developed By
        src="http://data.pkmmte.com/temp/social_google_plus_logo.png" />
 </a>
 
-License
-=======
+### License
 
 ```
 Copyright 2015 Abhijeet Mohan - https://github.com/voidabhi/Zomatify
