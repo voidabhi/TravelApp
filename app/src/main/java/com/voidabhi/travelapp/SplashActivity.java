@@ -39,6 +39,7 @@ public class SplashActivity extends Activity {
             }
         };
 
+        // start splash screen
         handler.postDelayed(startScreenRunnable,SPLASH_TIMEOUT);
 
     }
