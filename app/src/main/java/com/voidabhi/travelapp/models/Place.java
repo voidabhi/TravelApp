@@ -19,6 +19,7 @@ public class Place {
     private LatLng location;
     private String iconUrl;
 
+    // json keys
     private static final String JSON_KEY_NAME = "name";
     private static final String JSON_KEY_GEOMETRY = "geometry";
     private static final String JSON_KEY_LOCATION = "location";
