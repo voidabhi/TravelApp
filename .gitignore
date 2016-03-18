@@ -5,3 +5,4 @@
 app/build
 .idea
 .DS_Store
+dump.rdb
