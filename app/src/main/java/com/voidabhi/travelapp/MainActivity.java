@@ -29,8 +29,9 @@ import static com.voidabhi.travelapp.utils.NetUtils.showToast;
 
 
 public class MainActivity extends ActionBarActivity {
-
-
+ 
+ 
+    // mapping ui elements
     @InjectView(R.id.spinner_categories) Spinner categoriesSpinner;
     @InjectView(R.id.spinner_distances) Spinner distancesSpinner;
     @InjectView(R.id.button_go) Button go;
