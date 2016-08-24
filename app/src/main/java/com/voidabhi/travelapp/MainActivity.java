@@ -90,13 +90,12 @@ public class MainActivity extends ActionBarActivity {
                             showToast(MainActivity.this,R.string.message_maps_loading);
                             startActivity(mapsIntent);
                         }
-                        else
-                             showToast(MainActivity.this,R.string.cannot_access_location);
+                        else {
+                            showToast(MainActivity.this,R.string.cannot_access_location);	
+                        }
 
                 } else {
-
                     showToast(MainActivity.this,R.string.message_internet);
-
                 }
 
             }
@@ -140,8 +139,9 @@ public class MainActivity extends ActionBarActivity {
         Location location = null;
         boolean isGPSEnabled = locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER );
         boolean isNetworkEnabled = locationManager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
-        if ( !( isGPSEnabled || isNetworkEnabled ) )
-			showToast(MainActivity.this,"GPS and Network not available");
+        if ( !( isGPSEnabled || isNetworkEnabled ) ) {
+     	  	showToast(MainActivity.this,"GPS and Network not available");	
+        }
         else
         {
             if ( location == null )
