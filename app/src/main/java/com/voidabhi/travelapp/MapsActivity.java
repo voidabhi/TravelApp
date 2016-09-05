@@ -56,7 +56,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
+        // check if google play services exist
         if(!NetUtils.isGooglePlayServicesAvailable(this)){
             showToast(MapsActivity.this,R.string.services_na);
             finish();
