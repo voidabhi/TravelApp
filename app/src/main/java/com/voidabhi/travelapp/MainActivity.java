@@ -54,10 +54,10 @@ public class MainActivity extends ActionBarActivity {
         categoriesArray = getResources().getStringArray(R.array.categoriesArray);
         distancesArray = getResources().getStringArray(R.array.distancesArray);
 
-        ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_spinner_item,categoriesArray);
+        ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,categoriesArray);
         categoriesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        ArrayAdapter<String> distancesAdapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_spinner_item,distancesArray);
+        ArrayAdapter<String> distancesAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,distancesArray);
         categoriesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         categoriesSpinner.setAdapter(categoriesAdapter);
@@ -73,9 +73,9 @@ public class MainActivity extends ActionBarActivity {
                 String distance = distancesArray[distancesSpinner.getSelectedItemPosition()];
 
 
-                if(NetUtils.isOnline(MainActivity.this)) {
+                if(NetUtils.isOnline(getApplicationContext())) {
 
-                    showToast(MainActivity.this,R.string.fetching_location);
+                    showToast(getApplicationContext(),R.string.fetching_location);
 
                         Intent mapsIntent = new Intent(getApplicationContext(), MapsActivity.class);
                         mapsIntent.putExtra("category", category.toLowerCase());
@@ -87,15 +87,15 @@ public class MainActivity extends ActionBarActivity {
 
                             mapsIntent.putExtra("latitude", location.getLatitude());
                             mapsIntent.putExtra("longitude", location.getLongitude());
-                            showToast(MainActivity.this,R.string.message_maps_loading);
+                            showToast(getApplicationContext(),R.string.message_maps_loading);
                             startActivity(mapsIntent);
                         }
                         else {
-                            showToast(MainActivity.this,R.string.cannot_access_location);	
+                            showToast(getApplicationContext(),R.string.cannot_access_location);	
                         }
 
                 } else {
-                    showToast(MainActivity.this,R.string.message_internet);
+                    showToast(getApplicationContext(),R.string.message_internet);
                 }
 
             }
@@ -140,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
         boolean isGPSEnabled = locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER );
         boolean isNetworkEnabled = locationManager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
         if ( !( isGPSEnabled || isNetworkEnabled ) ) {
-     	  	showToast(MainActivity.this,"GPS and Network not available");	
+     	  	showToast(getApplicationContext(),"GPS and Network not available");	
         }
         else
         {
